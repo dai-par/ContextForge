@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI_prompt deveroper</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">&gt;_</div>
+                <div class="logo-text">Context<span>Forge</span></div>
+            </div>
+            <div class="badge">v0.1.0 · BETA</div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-tag">AI Developer Tool</div>
+            <h1>Drop your project.<br><span class="highlight">AI reads everything.</span></h1>
+            <p>フォルダをアップロードするだけで、AIにそのまま貼り付け可能なプロジェクトコンテキストを自動生成します。</p>
+        </section>
+
+        <section class="upload-section">
+            <form action="/tree" method="post" enctype="multipart/form-data" id="upload-form">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon" id="upload-icon"><input type="file" name="files" id="file-input" webkitdirectory multiple required>📁</input></div>
+                    <div class="upload-title" id="upload-title">フォルダをドロップ</div>
+                    <div class="upload-sub" id="upload-sub">またはクリックして選択 · すべてのファイル形式対応</div>
+                </div>
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    Generate Context →
+                </button>
+            </form>
+        </section>
+
+
+
+        <button type="button" id="copy_btn">Copy all</button>
+        <div id="data_all">
+        <pre>
+        {% if tree_lines %}
+        <p>-----TREE-----</p>
+        {% for tree in tree_lines %}
+            {{ tree }}
+        {% endfor %}
+        {% endif %}
+        </pre>
+        <br>
+        <pre><code>
+            {% for data in all_data %}
+                {% if data.path %}
+                <p>-----FILE : {{ data.path }}-----</p>
+                <pre>{{ data.content }}</pre>
+                <p>-----END FILE-----</p>
+                {% endif %}
+            {% endfor %}
+        </code></pre>
+        </div>
+    </div>
+    <script>
+        const btn_click = document.getElementById("copy_btn");
+        btn_click.addEventListener("click",() =>{
+            const code = document.getElementById("data_all").innerText;
+            navigator.clipboard.writeText(code)
+            btn_click.innerText = "Copied!"
+        })
+
+        const file_upload = document.getElementById("file-input");
+        const fileicon = document.getElementById("upload-icon")
+        const filemessage = document.getElementById("upload-title")
+        const filesub = document.getElementById("upload-sub")
+
+        file_upload.addEventListener("change",()=>{
+        filemessage.innerText = "アップロード済み"
+        filesub.innerText = "✓"   
+        })
+
+    </script>
+</body>
+</html>

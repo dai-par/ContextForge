@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI_prompt deveroper</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <form action="/tree" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" webkitdirectory multiple required>
+        <input type="submit" value="送信">
+    </form>
+    <button id="copy_btn">📋</button>
+    <div id="data_all">
+    <pre>
+    {% if tree_lines %}
+    <p>-----TREE-----</p>
+    {% for tree in tree_lines %}
+        {{ tree }}
+    {% endfor %}
+    {% endif %}
+    </pre>
+    <br>
+    <pre><code>
+        {% for data in all_data %}
+            {% if data.path %}
+            <p>-----FILE : {{ data.path }}-----</p>
+            <pre>{{ data.content }}</pre>
+            <p>-----END FILE-----</p>
+            {% endif %}
+        {% endfor %}
+    </code></pre>
+    </div>
+
+    <script>
+        const btn_click = document.getElementById("copy_btn");
+        btn_click.addEventListener("click",() =>{
+            const code = document.getElementById("data_all").innerText;
+            navigator.clipboard.writeText(code)
+            btn_click.innerText = "Copied!"
+        })
+    </script>
+</body>
+</html>
