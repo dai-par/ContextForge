@@ -1,7 +1,7 @@
 from flask import render_template, request, url_for
 import shutil
 import os
-from main.main_app import app
+from main import app
 import uuid
 
 UPLOAD_FOLDER = "upload"
