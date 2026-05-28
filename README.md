@@ -1,11 +1,12 @@
 ﻿# ContextForge
-
-　何ができるの？<br><br>
+<br>
+何ができるの？<br><br>
 AIにコードを見せたいとき、毎回ファイルを一個一個コピペしてませんか？
 ContextForgeはプロジェクトフォルダをまるごとアップロードするだけで、ファイルツリー＋全ファイルの中身を一括でテキスト化します。あとはChatGPTやClaudeに貼り付けるだけ。
 
 
 <img width="1888" height="879" alt="image" src="https://github.com/user-attachments/assets/a343b09d-29da-42f5-811c-a38a65e9bfed" />
+<br>
 <br>
 使い方<br>
 １．ContextForge を開く<br>
