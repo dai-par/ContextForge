@@ -1,8 +1,9 @@
-from flask import render_template, request, url_for
+from flask import Flask, render_template, request, url_for
 import shutil
 import os
-from main_app import app
 import uuid
+
+app = Flask(__name__)
 
 UPLOAD_FOLDER = "upload"
 
