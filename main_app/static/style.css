@@ -86,7 +86,7 @@ input[type="file"] {
     font-size: clamp(30px, 5vw, 56px);
     font-weight: 800;
     line-height: 1.05;
-    letter-spacing: -2px;
+    letter-spacing: -0.5px;
     margin-bottom: 20px;
 }
 
