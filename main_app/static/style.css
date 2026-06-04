@@ -83,8 +83,8 @@ input[type="file"] {
 }
 
 .hero h1 {
-    font-size: clamp(30px, 5vw, 56px);
-    font-weight: 900;
+    font-size: clamp(25px, 5vw, 56px);
+    font-weight: 800;
     line-height: 1.05;
     letter-spacing: -2px;
     margin-bottom: 20px;
